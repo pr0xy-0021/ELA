@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariya's ELA 20-1 Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc04;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --light-gray: #dadce0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0d47a1);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .memoir {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 30px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .passions {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .passion-card {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), #0d47a1);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .passion-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .passion-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .passion-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Text Study Section */
+        .text-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .text-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .text-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .text-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .text-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .text-content {
+            padding: 25px;
+        }
+        
+        .text-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .text-content .author {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Text Creation Section */
+        .creation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .creation-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .creation-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .creation-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .creation-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Reflection Section */
+        .reflection-content {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .reflection-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #ddd;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .memoir {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .passions {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>Ariya's ELA Portfolio</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#text-study">Text Study</a></li>
+                        <li><a href="#text-creation">Text Creation</a></li>
+                        <li><a href="#reflection">Reflection</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome to My Digital Portfolio</h1>
+                <p>Exploring the world of English Language Arts through reading, writing, and critical thinking</p>
+                <div class="memoir">Code. Football. Gym. Passion fuels my journey.</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who Am I?</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hi, I'm Ariya</h3>
+                    <p>I'm a passionate learner who finds joy in the intersection of technology, sports, and personal growth. My journey through ELA 20-1 has been an exciting exploration of language, literature, and self-expression.</p>
+                    <p>When I'm not immersed in code or analyzing literature, you'll find me on the football field strategizing with my team or at the gym pushing my physical limits. These diverse interests shape my perspective and fuel my creativity in all aspects of life.</p>
+                    <p>This portfolio represents my growth throughout this course, showcasing my critical thinking, writing skills, and personal reflections on the texts we've explored together.</p>
+                    
+                    <div class="passions">
+                        <div class="passion-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Coding</h3>
+                            <p>Solving problems and creating innovative solutions through programming</p>
+                        </div>
+                        <div class="passion-card">
+                            <i class="fas fa-football-ball"></i>
+                            <h3>Football</h3>
+                            <p>Team strategy, physical challenge, and the thrill of competition</p>
+                        </div>
+                        <div class="passion-card">
+                            <i class="fas fa-dumbbell"></i>
+                            <h3>Gym</h3>
+                            <p>Building strength, discipline, and mental resilience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-c900-61f7-8360-22f842f8ad81/raw?se=2025-06-20T20%3A59%3A28Z&sp=r&sv=2024-08-04&sr=b&scid=db134c31-6131-5aab-b7f1-9f11e174b5c9&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-20T18%3A37%3A34Z&ske=2025-06-21T18%3A37%3A34Z&sks=b&skv=2024-08-04&sig=GxbrXMzYMRehCNaMkMgtY5JaD/DcdfJWhXiS2YRvjaM%3D" alt="Ariya's Interests">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Study Section -->
+    <section id="text-study">
+        <div class="container">
+            <div class="section-title">
+                <h2>Text Study</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                </p>
+            
+            <div class="text-cards">
+                <div class="text-card">
+                    <div class="text-image">
+                        <img src="https://www.pluggedin.com/wp-content/uploads/2019/12/romeo-juliet-1024x596.jpg" alt="Book Cover">
+                    </div>
+                    <div class="text-content">
+                        <h3>Romeo and Juliet </h3>
+                        <span class="author">William Shakespeare</span>
+                        <p>Two teenagers belonging to competing families fall in love and meet a dreadful end. Shakespeare's poetic style of writing and the subjects of love, hatred, and fate continue to echo with great relevance today.</p>
+                    </div>
+                </div>
+                
+                <div class="text-card">
+                    <div class="text-image">
+                        <img src="https://pbs.twimg.com/profile_images/940413074166620161/Tvi5lQEo_400x400.jpg" alt="Book Cover">
+                    </div>
+                    <div class="text-content">
+                        <h3> The Absolutely True Diary of a Part-Time Indian</h3>
+                        <span class="author">Sherman Alexie</span>
+                        <p>Junior leaves his reservation school to find a better future, facing racism and identity struggles. The mix of humor and pain makes this book honest, relatable, and eye-opening.</p>
+                    </div>
+                </div>
+                
+                <div class="text-card">
+                    <div class="text-image">
+                        <img src="data:image/jpeg;base64,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" alt="Book Cover">
+                    </div>
+                    <div class="text-content">
+                        <h3>The Book Thief</h3>
+                        <span class="author">Markus Zusak</span>
+                        <p>Set in Nazi Germany, The Book Thief follows Liesel, a girl who finds hope in stolen books during war. The narrator, Death, and the focus on language make this a unique and emotional read.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Creation Section -->
+    <section id="text-creation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Text Creation</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                In this section, I showcase my own creative and analytical writing, demonstrating my growth as a writer and thinker throughout the course.
+            </p>
+            
+            <div class="creation-grid">
+                <div class="creation-card">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h3>Finding My Voice After Years of Silence</h3>
+                    <p>This text explains how I fled Iran at age four because of religious persecution, then lived in fear and silence in Turkey. After moving to Canada, I began unlearning that silence. Now, I’m learning to speak openly and live without hiding who I am.</p>
+                </div>
+                
+                <div class="creation-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>The Impact of Social Pressure in Romeo and Juliet</h3>
+                    <p>This text explains how social pressure influences the characters’ decisions in Romeo and Juliet. Romeo’s actions after Mercutio’s death and Juliet’s agreement to marry Paris show how family and societal expectations lead them to make tragic, impulsive choices they may not have made otherwise."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section id="reflection">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reflection Letter</h2>
+            </div>
+            
+            <div class="reflection-content">
+                <p>Dear Reader,</p>
+                
+                <p>As a learner, writer, and reader, I like to think of myself as being someone who places a huge emphasis on stories and the feelings that they evoke within individuals. I love reading novels about difficult human relationships or ones that push boundaries in society—George Orwell, Khaled Hosseini, and Suzanne Collins are personal favorites of mine. I also like reading historical fiction and dystopian series since they allow me to imagine different worlds while still focusing on real concerns. Other than reading, my next favorite activity is viewing contemplative movies and documentaries, especially those with strong character development or compelling visual work. I listen to music with excellent lyrics—hip-hop, alternative, and indie are my most preferred. As a writer, I prefer writing in personal narrative, fiction, or oral modes, where I can express freely. I like writing work that is emotionally true or imaginatively structured, even if it is not presented in standard academic forms.</p>
+                
+                <p>On English Language Arts, I generally excel at questions that involve creative writing, visual or multimedia, and anything where I get to think as myself or make connections between texts and real life. I sometimes struggle with literary analysis essays, especially when I am asked to deconstruct tricky symbolism or connect a few texts to a single theme. I learn best through examples, diagrams, and reviewing my work using feedback. I am also effective when I get to work at my own pace, especially when I have a clear checklist or rubric to work from. My writing procedure is usually to begin with brainstorming and writing down raw thoughts, followed by scribbling a rough draft in a hurry and then revising later. Reading my stuff aloud during revising is helpful for me to get a sense of what works and what doesn't. One thing I need to continue improving on is organization—I have a tendency to jump around too much in my thoughts without having good transitions. Overall, I consider myself an avid learner always looking for ways to grow as a thinker and communicator.</p>
+                 
+                <p>Sincerely,</p>
+                <p><strong>Ariya</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ariya's Portfolio</h3>
+                    <p>This digital portfolio showcases my work and growth throughout ELA 20-1, highlighting my unique perspective as a student passionate about coding, football, and fitness.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#">Home</a>
+                        <a href="#about">About Me</a>
+                        <a href="#text-study">Text Study</a>
+                        <a href="#text-creation">Text Creation</a>
+                        <a href="#reflection">Reflection</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Email: ariya@learn.cssd.ab.ca</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ariya's ELA 20-1 Digital Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if(pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
